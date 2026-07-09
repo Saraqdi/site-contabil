@@ -1,1 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contábil · Serviços & Gestão</title>
+  <!-- Font Awesome (ícones) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+    }
 
+    body {
+      background: #f5f2ed;
+      color: #2c3e4e;
+      line-height: 1.5;
+    }
+
+    :root {
+      --verde-escuro: #1f4a3b;
+      --verde-musgo: #3d6b4f;
+      --dourado: #c9a86c;
+      --bege-claro: #f2ede6;
+      --cinza-claro: #e6e0d8;
+      --texto-escuro: #1f2e3a;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header */
+    .top-bar {
+      background: var(--verde-escuro);
+      padding: 18px 0;
+      border-bottom: 4px solid var(--dourado);
+    }
+
+    .top-bar .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo h1 {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.8rem;
+      letter-spacing: -0.5px;
+    }
+    .logo h1 span {
+      color: var(--dourado);
+      font-weight: 300;
+    }
+
+    .contato-rapido a {
+      color: #fff;
+      background: var(--dourado);
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid transparent;
+    }
+    .contato-rapido a:hover {
+      background: #b8944a;
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .contato-rapido i {
+      font-size: 1.2rem;
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(145deg, #eae3db, #dfd6cb);
+      padding: 50px 0 40px;
+      border-bottom: 2px solid var(--cinza-claro);
+    }
+    .hero h2 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      color: var(--verde-escuro);
+      max-width: 700px;
+    }
+    .hero h2 i {
+      color: var(--dourado);
+      margin-right: 6px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #2e4a3b;
+      margin-top: 12px;
+      max-width: 600px;
+    }
+
+    /* serviços */
+    .servicos {
+      padding: 60px 0 40px;
+    }
+    .grid-servicos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .card-servico {
+      background: #fffffffa;
+      border-radius: 24px;
+      padding: 28px 22px 22px;
+      box-shadow: 0 10px 20px -10px rgba(0,0,0,0.08);
+      border-left: 8px solid var(--dourado);
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #e5ded6;
+    }
+    .card-servico:hover {
+      transform: translateY(-6px);
+      border-left-width: 12px;
+      box-shadow: 0 18px 30px -12px rgba(30, 60, 40, 0.25);
+      border-color: var(--verde-musgo);
+    }
+    .card-servico i {
+      font-size: 2.4rem;
+      color: var(--verde-escuro);
+      background: #e1ede5;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      margin-bottom: 18px;
+    }
+    .card-servico h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--verde-escuro);
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .card-servico p {
+      color: #1f3a2e;
+      font-size: 0.98rem;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .card-servico .tag {
+      margin-top: 18px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--verde-musgo);
+      background: #e7f0e9;
+      padding: 6px 14px;
+      border-radius: 40px;
+      align-self: flex-start;
+      letter-spacing: 0.3px;
+    }
+
+    /* notícias */
+    .noticias {
+      background: var(--bege-claro);
+      padding: 60px 0 70px;
+      border-top: 2px solid #d6cdc1;
+      border-bottom: 2px solid #d6cdc1;
+    }
+    .noticias .cabecalho {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .noticias h2 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      color: var(--verde-escuro);
+      letter-spacing: -0.5px;
+    }
+    .noticias h2 i {
+      color: var(--dourado);
+      margin-right: 12px;
+    }
+    .badge-semanal {
+      background: var(--verde-escuro);
+      color: #f5ede4;
+      padding: 10px 24px;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      border: 1px solid var(--dourado);
+    }
+    .badge-semanal i {
+      margin-right: 8px;
+      color: var(--dourado);
+    }
+
+    .lista-noticias {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .item-noticia {
+      background: white;
+      padding: 24px 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border-left: 6px solid var(--dourado);
+      transition: 0.15s;
+    }
+    .item-noticia:hover {
+      border-left-color: var(--verde-escuro);
+      background: #fcf9f5;
+    }
+    .item-noticia .data {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--verde-musgo);
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .item-noticia .data i {
+      color: var(--dourado);
+    }
+    .item-noticia h4 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #1f3a2e;
+      margin-bottom: 6px;
+    }
+    .item-noticia p {
+      color: #2d4a3a;
+      font-size: 1rem;
+    }
+
+    /* rodapé */
+    .rodape {
+      background: var(--verde-escuro);
+      color: #f0efe7;
+      padding: 40px 0 28px;
+    }
+    .rodape .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .rodape .info-contato {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+    }
+    .rodape .info-contato a {
+      color: #f2ede6;
+      text-decoration: none;
+      font-size: 1.1rem;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 10px 22px;
+      border-radius: 60px;
+      border: 1px solid #5f7f6b;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .rodape .info-contato a i {
+      color: var(--dourado);
+      font-size: 1.3rem;
+    }
+    .rodape .info-contato a:hover {
+      background: var(--dourado);
+      color: #1f3a2e;
+      border-color: var(--dourado);
+    }
+    .rodape .info-contato a:hover i {
+      color: #1f3a2e;
+    }
+    .rodape .copy {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      margin-top: 8px;
+      width: 100%;
+      text-align: center;
+      border-top: 1px solid #3a5f4a;
+      padding-top: 20px;
+    }
+
+    @media (max-width: 760px) {
+      .top-bar .container {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+      }
+      .contato-rapido {
+        width: 100%;
+      }
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .noticias .cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .rodape .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .rodape .info-contato {
+        flex-direction: column;
+        width: 100%;
+      }
+      .rodape .info-contato a {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* WhatsApp flutuante */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #25d366;
+      color: white;
+      width: 64px;
+      height: 64px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+      transition: 0.2s;
+      z-index: 999;
+      text-decoration: none;
+      border: 2px solid #fff;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      background: #1fa85a;
+      box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+    }
+    .fa-regular, .fas, .far, .fab {
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- topo -->
+  <header class="top-bar">
+    <div class="container">
+      <div class="logo">
+        <h1> Gestão Contábil</span> 
+      </div>
+      <div class="contato-rapido">
+        <a href="https://wa.me/5563984464398?text=Olá%2C%20vim%20pelo%20site%20e%20gostaria%20de%20informações" target="_blank">
+          <i class="fab fa-whatsapp"></i> Fale agora
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="container">
+      <h2><i class="fas fa-chart-pie"></i> Soluções contábeis completas</h2>
+      <p>Da abertura ao BPO financeiro, com tecnologia e transparência.</p>
+    </div>
+  </section>
+
+  <!-- serviços (8 cards) -->
+  <section class="servicos container">
+    <div class="grid-servicos">
+      <!-- 1 - Folha de Pagamento -->
+      <div class="card-servico">
+        <i class="fas fa-user-cog"></i>
+        <h3>Folha de Pagamento</h3>
+        <p>Admissões, férias, rescisões e obrigações trabalhistas em dia.</p>
+        <span class="tag">Departamento pessoal</span>
+      </div>
+      <!-- 2 - Abertura de empresas -->
+      <div class="card-servico">
+        <i class="fas fa-building"></i>
+        <h3>Abertura de Empresas</h3>
+        <p>Consultoria completa para abrir ou regularizar seu CNPJ.</p>
+        <span class="tag">CNPJ · MEI</span>
+      </div>
+      <!-- 3 - Dashboards BI -->
+      <div class="card-servico">
+        <i class="fas fa-chart-line"></i>
+        <h3>Dashboards Financeiros</h3>
+        <p>Painéis visuais e indicadores em tempo real para acompanhar a saúde do negócio.</p>
+        <span class="tag">BI & KPIs</span>
+      </div>
+      <!-- 4 - BPO Financeiro -->
+      <div class="card-servico">
+        <i class="fas fa-hand-holding-usd"></i>
+        <h3>BPO Financeiro</h3>
+        <p>Terceirização completa: contas a pagar, a receber, fluxo de caixa e conciliações.</p>
+        <span class="tag">BPO</span>
+      </div>
+      <!-- 5 - MEI e Simples -->
+      <div class="card-servico">
+        <i class="fas fa-file-invoice"></i>
+        <h3>MEI & Simples Nacional</h3>
+        <p>Abertura, emissão de notas, guias e obrigações em dia.</p>
+        <span class="tag">Simples · MEI</span>
+      </div>
+      <!-- 6 - Automação contábil -->
+      <div class="card-servico">
+        <i class="fas fa-robot"></i>
+        <h3>Automação Contábil</h3>
+        <p>Integração de sistemas, robôs de conciliação e rotinas automatizadas.</p>
+        <span class="tag">RPA · integração</span>
+      </div>
+      <!-- 7 - Perícia Trabalhista -->
+      <div class="card-servico">
+        <i class="fas fa-gavel"></i>
+        <h3>Perícia Contábil Trabalhista</h3>
+        <p>Cálculos e laudos técnicos para processos trabalhistas, com base pericial sólida e imparcial.</p>
+        <span class="tag">Laudos · Cálculos</span>
+      </div>
+      <!-- 8 - Auditoria & Compliance -->
+      <div class="card-servico">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Auditoria e Compliance</h3>
+        <p>Controles internos e conformidade legal para reduzir riscos.</p>
+        <span class="tag">Riscos · conformidade</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTÍCIAS E NOVIDADES -->
+  <section class="noticias">
+    <div class="container">
+      <div class="cabecalho">
+        <h2><i class="far fa-newspaper"></i> Novidades & Informes</h2>
+        <span class="badge-semanal"><i class="fas fa-calendar-week"></i> atualização semanal</span>
+      </div>
+
+      <div class="lista-noticias">
+        <div class="item-noticia">
+          <div class="data"><i class="far fa-calendar-alt"></i> 09/07/2026</div>
+          <h4>Prazo para entrega da ECD/ECF 2026</h4>
+          <p>Fique atento ao calendário fiscal: a entrega da Escrituração Contábil Digital e da ECF começa em agosto. Prepare seus documentos com antecedência.</p>
+        </div>
+        <div class="item-noticia">
+          <div class="data"><i class="far fa-calendar-alt"></i> 02/07/2026</div>
+          <h4>Novo limite do MEI e mudanças no Simples</h4>
+          <p>O limite de faturamento para MEI foi reajustado para R$ 81.000,00 anuais. Empresas do Simples Nacional devem revisar o anexo III para aproveitar benefícios.</p>
+        </div>
+        <div class="item-noticia">
+          <div class="data"><i class="far fa-calendar-alt"></i> 25/06/2026</div>
+          <h4>BPO Financeiro: tendências para 2026</h4>
+          <p>A terceirização financeira cresce 30% no Brasil. Integração com dashboards e automação são os diferenciais para redução de custos e maior precisão.</p>
+        </div>
+        <div class="item-noticia">
+          <div class="data"><i class="far fa-calendar-alt"></i> 18/06/2026</div>
+          <h4>Receita Federal atualiza regras para emissão de NF-e</h4>
+          <p>Novas versões do leiaute da Nota Fiscal Eletrônica entram em vigor em julho. Empresas devem atualizar sistemas para evitar rejeições.</p>
+        </div>
+        <div class="item-noticia">
+          <div class="data"><i class="far fa-calendar-alt"></i> 10/06/2026</div>
+          <h4>Como a automação contábil reduz erros e custos</h4>
+          <p>Robôs de conciliação e integração com ERPs diminuem em até 70% o retrabalho manual. Saiba como implementar na sua empresa.</p>
+        </div>
+        <div class="item-noticia">
+          <div class="data"><i class="far fa-calendar-alt"></i> 02/06/2026</div>
+          <h4>Plano de recuperação fiscal para MEI e Simples</h4>
+          <p>Programa de regularização de débitos com a PGFN e RFB oferece descontos e parcelamento em até 120 meses. Aproveite até dezembro.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 30px; background: #e6ddd2; padding: 14px 22px; border-radius: 60px; display: inline-block; font-size: 0.9rem; color: #1f3a2e;">
+        <i class="fas fa-sync-alt" style="margin-right: 10px; color: var(--dourado);"></i> Novas informações toda semana — acompanhe!
+      </div>
+    </div>
+  </section>
+
+  <!-- rodapé -->
+  <footer class="rodape">
+    <div class="container">
+      <div class="info-contato">
+        <a href="mailto:sara.sousads30@gmail.com" target="_blank">
+          <i class="fas fa-envelope"></i> sara.sousads30@gmail.com
+        </a>
+        <a href="https://wa.me/5563984464398?text=Olá%2C%20vim%20pelo%20site%20e%20gostaria%20de%20informações" target="_blank">
+          <i class="fab fa-whatsapp"></i> (63) 98446-4398
+        </a>
+        <a href="https://wa.me/5563984464398?text=Olá%20vim%20pelo%20site!" target="_blank" style="background: #25d366; border-color: #25d366; color: #1f3a2e;">
+          <i class="fab fa-whatsapp"></i> Fale direto
+        </a>
+      </div>
+      <div class="copy">
+        <i class="far fa-copyright"></i> 2026 Contábil · Gestão — todos os serviços personalizados.
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <a href="https://wa.me/5563984464398?text=Olá%2C%20vim%20pelo%20site%20e%20gostaria%20de%20informações%20sobre%20os%20serviços" 
+     class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+</body>
+</html>
